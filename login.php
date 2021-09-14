@@ -68,6 +68,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
         border: none;
     }
 
+    #signup{
+        font-family: Arial;
+        padding: 10px;
+        width: 100px;
+        color: white;
+        background-color: lightblue;
+        border: none;
+        text-decoration: none;
+        font-size: 12px;
+    }
+
     #box{
 
         background-color: grey;
@@ -80,13 +91,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 <div id="box">
     <form method="post">
-        <div style="font-size: 20px;margin: 10px;color: white;">Login</div>
+        <div style="text-align: center;font-size: 20px;margin: 10px;color: white;font-family: Arial;font-weight: bold">Login</div><br>
         <input id="text" type="text" name="user_name"><br><br>
         <input id="text" type="password" name="password"><br><br>
+        <center>
+        <input id="button" type="submit" value="Login"><br><br><br>
 
-        <input id="button" type="submit" value="Login"><br><br>
-
-        <a href="signup.php">Click to Signup</a><br><br>
+        <a id="signup" href="signup.php">Click to Signup</a><br><br>
+        </center>
     </form>
 </div>
 </body>
