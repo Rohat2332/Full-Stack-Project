@@ -1,4 +1,7 @@
-<?php include 'filesLogic.php';?>
+<?php include 'filesLogic.php';
+session_start();
+echo $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +21,17 @@
     <th>Action</th>
     </thead>
     <tbody>
-    <?php foreach ($files as $file): ?>
-        <tr>
-            <td><?php echo $file['id']; ?></td>
-            <td><?php echo $file['name']; ?></td>
-            <td><?php echo floor($file['size'] / 1000) . ' KB'; ?></td>
-            <td><?php echo $file['downloads']; ?></td>
-            <td><a href="downloads.php?file_id=<?php echo $file['id'] ?>">Download</a></td>
-        </tr>
-    <?php endforeach;?>
+    <?php foreach ($files as $file):
+        if ($file['userid'] == $_SESSION['user_id']) {
+            echo "<tr>
+            <td>".$file['id']."</td>
+            <td>".$file['name']."</td>
+            <td>".floor($file['size'] / 1000) . ' KB' . "</td>
+            <td>".$file['downloads']."</td>
+            <td><a href='downloads.php?file_id=".$file['id']."'>Download</a></td>
+         </tr>";
+        }
+    endforeach;?>
 
     </tbody>
 </table>
